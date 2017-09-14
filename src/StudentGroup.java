@@ -256,11 +256,46 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public void removeToIndex(int index) {
 		// Add your implementation here
+		Student[] stu = getStudents();
+		if((index <= 0 || index >= stu.length))
+		{
+			throw new IllegalArgumentException("index out of rangeinside");
+		}
+		Student[] stu1 = new Student[index];
+		int j=0;
+		for(int i=index;i<stu.length;i++)
+		{
+			stu1[j] = stu[i];
+			j++;
+		}
+		stu = stu1;
 	}
 
 	@Override
 	public void removeToElement(Student student) {
 		// Add your implementation here
+		if(student  == null)
+		{
+			throw new IllegalArgumentException("student is null");
+		}
+		Student[] stu = getStudents();
+		int j=0,ind=-1;
+		for(int i=0;i<stu.length;i++)
+		{
+			if(student == stu[i])
+			{
+				ind = i;
+				break;
+			}
+		}
+		Student[] stu1 = new Student[stu.length - ind];
+		for(int i=ind;i<stu.length;i++)
+		{
+			stu1[j] = stu[i];
+			j++;
+		}
+		stu = stu1;
+		
 	}
 
 	@Override
