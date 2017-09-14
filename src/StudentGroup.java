@@ -32,7 +32,7 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public void setStudents(Student[] students) {
 		// Add your implementation here
-		if(students == NULL)
+		if(students == null)
 		{
 			throw new IllegalArgumentException("student is null");
 		}
@@ -55,7 +55,7 @@ public class StudentGroup implements StudentArrayOperation {
 		}
 		else
 		{
-			Students s1 = getStudents();
+			Student[] s1 = getStudents();
 			Student s = s1[index];
 		return s;
 		}
@@ -64,12 +64,12 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public void setStudent(Student student, int index) {
 		// Add your implementation here
+		Student[] stu = getStudents();
 		if(student  == null)
 		{
 			throw new IllegalArgumentException("student is null inside setStudent");
 		}
-		Student[] stu = getStudents();
-		else if((index <= 0 || index >= stu.length)
+		else if((index <= 0 || index >= stu.length))
 				{
 					throw new IllegalArgumentException("index out of rangeinside setStudent");
 				}
