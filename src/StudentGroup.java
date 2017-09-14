@@ -1,4 +1,5 @@
 import java.util.Date;
+import java.util.List;
 
 /**
  * A fix-sized array of students
@@ -43,6 +44,10 @@ public class StudentGroup implements StudentArrayOperation {
 			{
 				stud[i] = students[i]; 
 			}
+			//Student[] stud = getStudents();
+			//List<Integer> targetList = new ArrayList<Integer>(Arrays.asList(stud));
+			
+			
 		}
 	}
 
@@ -82,36 +87,170 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public void addFirst(Student student) {
 		// Add your implementation here
+		if(student  == null)
+		{
+			throw new IllegalArgumentException("student is null inside setStudent");
+		}
+		Student[] stu = getStudents();
+		Student[] stu1 = new Student[stu.length + 1];
+		stu1[0] = student;
+		for(int i=0;i<stu.length;i++)
+		{
+			stu1[i+1] = stu[i];
+		}
+		stu = stu1;
 	}
 
 	@Override
 	public void addLast(Student student) {
 		// Add your implementation here
+		if(student  == null)
+		{
+			throw new IllegalArgumentException("student is null inside setStudent");
+		}
+		Student[] stu = getStudents();
+		Student[] stu1 = new Student[stu.length + 1];
+		int i;
+		for(i=0;i<stu.length;i++)
+		{
+			stu1[i] = stu[i];
+		}
+		stu1[i] = student;
+		stu = stu1;
 	}
 
 	@Override
 	public void add(Student student, int index) {
 		// Add your implementation here
+		Student[] stu = getStudents();
+		if(student  == null)
+		{
+			throw new IllegalArgumentException("student is null");
+		}
+		else if((index <= 0 || index >= stu.length))
+		{
+			throw new IllegalArgumentException("index out of range");
+		}
+		Student[] stu1 = new Student[stu.length + 1];
+		int i;
+		for(i=0;i<index;i++)
+		{
+			stu1[i] = stu[i];
+		}
+		stu1[i] = student;
+		for(;i<stu.length;i++)
+		{
+			stu1[i+1] = stu[i];
+		}
+		stu = stu1;
 	}
 
 	@Override
 	public void remove(int index) {
 		// Add your implementation here
+		Student[] stu = getStudents();
+		if((index <= 0 || index >= stu.length))
+		{
+			throw new IllegalArgumentException("index out of rangeinside");
+		}
+		Student[] stu1 = new Student[stu.length - 1];
+		int j=0,i;
+		for(i=0;i<index;i++)
+		{
+			stu1[j] = stu[i];
+			j++;
+		}
+		i++;
+		for(;i<stu.length;i++)
+		{
+			stu1[j] = stu[i];
+			j++;
+		}
+		stu = stu1;
 	}
 
 	@Override
 	public void remove(Student student) {
 		// Add your implementation here
+		if(student  == null)
+		{
+			throw new IllegalArgumentException("student is null");
+		}
+		Student[] stu = getStudents();
+		Student[] stu1 = new Student[stu.length - 1];
+		int j=0,ind=-1,i;
+		for(i=0;i<stu.length;i++)
+		{
+			if(student == stu[i])
+			{
+				ind = i;
+				break;
+			}
+		}
+		if(ind == -1)
+		{
+			throw new IllegalArgumentException("Student not exist");
+		}
+		for(i=0;i<ind;i++)
+		{
+			stu1[j] = stu[i];
+			j++;
+		}
+		i++;
+		for(;i<stu.length;i++)
+		{
+			stu1[j] = stu[i];
+			j++;
+		}
+		stu = stu1;
+		
 	}
 
 	@Override
 	public void removeFromIndex(int index) {
 		// Add your implementation here
+		Student[] stu = getStudents();
+		if((index <= 0 || index >= stu.length))
+		{
+			throw new IllegalArgumentException("index out of rangeinside");
+		}
+		Student[] stu1 = new Student[index];
+		for(int i=0;i<index;i++)
+		{
+			stu1[i] = stu[i];
+		}
+		stu = stu1;
+		
 	}
 
 	@Override
 	public void removeFromElement(Student student) {
 		// Add your implementation here
+		if(student  == null)
+		{
+			throw new IllegalArgumentException("student is null");
+		}
+		Student[] stu = getStudents();
+		
+		int j=0,ind=-1;
+		for(int i=0;i<stu.length;i++)
+		{
+			if(student == stu[i])
+			{
+				ind = i;
+				break;
+			}
+		}
+		if(ind == -1)
+		{
+			throw new IllegalArgumentException("Student not exist");
+		}
+		Student[] stu1 = new Student[ind+1];
+		for(int i=0;i<ind;i++)
+		{
+			stu1[i] = stu[i];
+		}
+		
 	}
 
 	@Override
