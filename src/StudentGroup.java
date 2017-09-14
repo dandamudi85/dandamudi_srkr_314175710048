@@ -181,7 +181,7 @@ public class StudentGroup implements StudentArrayOperation {
 		int j=0,ind=-1,i;
 		for(i=0;i<stu.length;i++)
 		{
-			if(student == stu[i])
+			if(student.equals(stu[i]))
 			{
 				ind = i;
 				break;
@@ -235,7 +235,7 @@ public class StudentGroup implements StudentArrayOperation {
 		int j=0,ind=-1;
 		for(int i=0;i<stu.length;i++)
 		{
-			if(student == stu[i])
+			if(student.equals(stu[i]))
 			{
 				ind = i;
 				break;
@@ -282,7 +282,7 @@ public class StudentGroup implements StudentArrayOperation {
 		int j=0,ind=-1;
 		for(int i=0;i<stu.length;i++)
 		{
-			if(student == stu[i])
+			if(student.equals(stu[i]))
 			{
 				ind = i;
 				break;
